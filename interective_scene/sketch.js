@@ -3,7 +3,7 @@
 // March 3rd 2026
 //
 // Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+// added bgMusic
 
 let x = 200;
 let y = 200;
@@ -11,12 +11,16 @@ let dx = 4;
 let dy = 3;
 let batW = 100;
 let batH = 10;
-let batY = 350;
+let batY = 300;
 let counter = 0;
 let bgMusic;
+let img;
+let showNewBg = false; 
 
 function setup(){
   createCanvas(400,400);
+  background(200);
+
   rectMode(CENTER);
   for (let counter = 1; counter <= 10; counter++) {
     console.log(counter);
@@ -25,16 +29,22 @@ function setup(){
 }
 // Background Image changing.
 function preload() {
- img = loadImage("Pixel art bg.jpg");
+ img = loadImage("macro.jpg");
  bgMusic = loadSound("bgMusic.mp3");
 
 }
 
 
 function draw(){
-  background(200);
-  text("Score:",15,40)
+  if ( showNewBg === true ){
+    background('blue');
+  }
+  else {
+    image(img, 0, 0,width,height);
+  }
   textSize(15);
+  fill("white");
+  text("Score:" + counter,15,40)
   bat();
   drawBall();
 }
@@ -43,6 +53,7 @@ function bat(){
 
   fill("black");
   rect(mouseX,batY,batW,batH);
+
 }
 // Ball bouncing
 function drawBall(){
@@ -56,21 +67,19 @@ function drawBall(){
   }
   if (y > height || y < 0){
     dy =  dy *-1;
+    counter += 1;
   }
   // Detetion collision...
-  if ((x >= mouseX && x <= mouseX+ batW)&& (y + 12.5 >= batY)){
-    x *= -1;
-    y *= -1;
-    x *= -1;
-    x *= -1;
-    counter += 1;
-
+  if (x > mouseX - batW/2 && x< mouseX + batW/2 && y >= batY) {
+    dy = dy * -1;
+    
   }
-  // when clicked bg changes.
-  function keyPressed(){
-  if (key === "a"){
-  image(img, 0, 0, width, height);
- }
-}
+  
 } 
 
+// when clicked bg music.
+function mousePressed() {
+  if (!bgMusic.isPlaying()) {
+    bgMusic.loop(); // Starts the music and keeps it on repeat
+  }
+}
