@@ -4,6 +4,7 @@
 - [Scope](02-scope)
 -[Image Demo](03 image)
 -[Ball array](04-ball-array)
+-[Generative art](05-arts)
 
 
 ## Assignmet
