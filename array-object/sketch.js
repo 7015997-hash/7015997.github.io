@@ -9,6 +9,9 @@ let map =[];
 let rows = 8;
 let colums = 8;
 let size = 30;
+let r = (255,0,0);
+let g = (0,255,0);
+let b = (0,0,255);
 
 
 
@@ -26,3 +29,7 @@ function draw() {
   box(50);
   pop(0);
 }
+function box(){
+  randomizeColor(r,g,b);
+}
+
