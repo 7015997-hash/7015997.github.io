@@ -10,8 +10,13 @@ let rows=40 ;
 let colums=40;
 let colSize;
 let rowSize;
+let board =[];
 let marginRight = 100;
-
+const SHAPES = [
+  [[0,1],[1,1],[2,1],[3,1]], // I
+  [[0,0],[1,0],[0,1],[1,1]], // O
+  [[1,0],[0,1],[1,1],[2,1]]  // T
+];
 
 
 
