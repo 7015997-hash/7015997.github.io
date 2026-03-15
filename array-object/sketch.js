@@ -14,5 +14,13 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+    background(102,0,51);
+  
+  fill(0,153,153);
+  square(52,200,50);
+  
+  fill(255,204,229,150);
+  circle(50,200,50);
+  noStroke();
+  
 }
