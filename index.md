@@ -5,6 +5,7 @@
 -[Image Demo](03 image)
 -[Ball array](04-ball-array)
 -[Generative art](05-arts)
+-[Perlin Noise](06-noise)
 
 
 ## Assignmet
