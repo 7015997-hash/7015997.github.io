@@ -4,24 +4,46 @@
 //
 // Extra for Experts:
 // - used buffer canvas which helped me to make two layer (with help) ,used the bezierVertex from reference and made a s-curve shape.Used a texture for the middle circle.
+// Used Chladni designs.In csss added the sclae function to make it look bigger.Added Buttons.Added text through HTML>
 
 
 let first = 1;
+let cols ;
+let rows;
+let size =1;
+let m = 5;
+let n = 1;
+let threshold = 0.05;
+
 
 function setup() {
   createCanvas(400, 400);
   angleMode(DEGREES);
   noStroke();
 
+
   // Button 1
-  let button1 = createButton('random drawing');
+  let button1 = createButton('Chladni Kafiyeh');
   button1.position(100, 450);
-  button1.mousePressed(() => first = 2);
+  button1.mousePressed(() => 
+    {first = 2;
+      loop();
+    })
+  
 
   // Button 2 
-  let button2 = createButton('next');
+  let button2 = createButton('Block design');
   button2.position(130, 480);
-  button2.mousePressed(() => first = 1);
+  button2.mousePressed(() => {
+    first = 1;
+    loop();
+  })
+
+  //  for the second art
+
+  cols = width/size;
+  rows= height/size;
+
 }
 
 function draw() {
@@ -29,15 +51,41 @@ function draw() {
     showFirst();
   } 
   else {
-    showRandom();
+    showChladni();
+    noLoop();
   }
+  
 }
 
-function showRandom() {
-  background(50);
-  fill(255);
-  text("Project 2 Placeholder", 150, 200);
+function showChladni() {
+  noStroke();
+for (let i = 0; i<cols;i++){
+  for (let j= 0; j< rows;j++){
+    let x = map(i,0,cols,0,1);
+    let y = map(j,0,rows,0,1);
+    let val =chladni(x,y);
+    if (abs (val)< threshold){
+      fill(0);
+    } 
+    else{
+      fill(255);
+    }
+    // fill(val);
+    rect(i*size,j*size,size,size);
+  }
 }
+// chladni();
+
+
+}
+function chladni(x,y){
+  let L=1;
+  return cos(n * PI * x/L) * cos(m * PI * y/L) - 
+          cos(m * PI * x/L) * cos(n * PI * y/L);
+} 
+
+
+
 
 function showFirst() {
   background(204, 204, 0);
