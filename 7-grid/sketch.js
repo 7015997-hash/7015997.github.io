@@ -30,6 +30,13 @@ function draw() {
   showGrid();
 }
 
+function mousePressed(){
+  let x = Math.floor(mouseX/cellSize);
+  let y = Math.floor(mouseY/cellSize);
+
+
+}
+
 function showGrid() {
   for (let y = 0; y < SQUARE_DIMENSION; y++) {
     for (let x = 0; x < SQUARE_DIMENSION; x++) {
