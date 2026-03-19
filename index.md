@@ -6,6 +6,7 @@
 -[Ball array](04-ball-array)
 -[Generative art](05-arts)
 -[Perlin Noise](06-noise)
+-[2d Grid](7-grid)
 
 
 ## Assignmet
