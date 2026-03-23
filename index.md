@@ -7,8 +7,10 @@
 -[Generative art](05-arts)
 -[Perlin Noise](06-noise)
 -[2d Grid](7-grid)
+[Game of life](9-life)
 
 
 ## Assignmet
   -[Interective Scene](interective_scene)
   -[Arrays and Object notation](array-object)
+  -[Grid based game](grid-based)
