@@ -7,10 +7,9 @@
 
 
 
-let rows;
-let cols;
-
-
+let rows = 5;
+let cols = 5;
+let board=[];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -18,4 +17,22 @@ function setup() {
 
 function draw() {
   background(220);
+  drawgrid();
+
+}
+
+function   drawgrid(){
+  let colSize = width/cols;
+  let rowSize = height/rows;
+
+  for (let i = 0; i < cols; i++){
+    for (let j = 0; j < rows; j++){
+      rect(i*colSize, j*rowSize,colSize,rowSize);
+
+
+    }
+
+
+  }
+
 }
