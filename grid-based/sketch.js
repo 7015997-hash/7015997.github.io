@@ -18,6 +18,7 @@ function setup() {
 function draw() {
   background(220);
   drawgrid();
+  makeResize();
 
 }
 
@@ -34,5 +35,10 @@ function   drawgrid(){
 
 
   }
+  function makeResize(){
+    resizeCanvas(windowWidth,windowHeight);
+  }
+
+
 
 }
