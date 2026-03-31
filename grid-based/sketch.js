@@ -13,7 +13,7 @@ let button2;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   button = createButton('Puzzle');
-  button.position(width/2, height/2);
+  button.position(width/2 - 50, height/2);
   button.mousePressed(startGame);
 
   button2 = createButton('Tic tae Toe');
@@ -29,25 +29,25 @@ function draw() {
   else if (screen ===1 ){
     drawGame();
   }
-
-  function drawMenu(){
-    background(200);
-    textAlign(CENTER);
-    textSize(30);
-    fill(255);
-    text('MAin', width/2, height/3);
-    button.show();
-    button2.show();
-  }
-  function drawGame() {
-    button.hide();
-    button2.hide();
-    background(50, 150, 50);
-    text('Game Screen', width/2, height/2);
-  }
-
-  function startGame() {
-    screen = 1;
-  }
-
 }
+
+function drawMenu(){
+  background(200);
+  textAlign(CENTER);
+  textSize(30);
+  fill(255);
+  text('MAin', width/2, height/3);
+  button.show();
+  button2.show();
+}
+function drawGame() {
+  button.hide();
+  button2.hide();
+  background(50, 150, 50);
+  text('Game Screen', width/2, height/2);
+  }
+
+    function startGame() {
+      screen = 1;
+    }
+
