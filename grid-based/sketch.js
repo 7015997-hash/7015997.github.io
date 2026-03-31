@@ -17,7 +17,7 @@ function setup() {
   button.mousePressed(startGame);
 
   button2 = createButton('Tic tae Toe');
-  button2.position(width/2, height/5);
+  button2.position(width/2 + 10, height/2);
   button2.mousePressed(startGame);
 }
 
@@ -29,6 +29,7 @@ function draw() {
   else if (screen ===1 ){
     drawGame();
   }
+  displayGrid();
 }
 
 function drawMenu(){
@@ -36,18 +37,32 @@ function drawMenu(){
   textAlign(CENTER);
   textSize(30);
   fill(255);
-  text('MAin', width/2, height/3);
+  text('Main', width/2+30, height/2-50);
   button.show();
   button2.show();
 }
 function drawGame() {
   button.hide();
   button2.hide();
-  background(50, 150, 50);
-  text('Game Screen', width/2, height/2);
+  background(100);
+  let rows;
+  let cols;
+  let grid;
+}
+function displayGrid(){
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < cols; x++) {
+      if (grid[y][x] === 0) {
+        fill("white");
+      }
+      else if (grid[y][x] === 1) {
+        fill("black");
+      }
+      square(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
+}
   }
-
-    function startGame() {
-      screen = 1;
-    }
+}
+function startGame() {
+  screen = 1;
+}
 
