@@ -11,17 +11,17 @@ class Tile {
     this.img = img;
   }
 }
-
+let source;
 let screen = 0;
 let button;
 let button2;
 let tiles = [];    // The pieces
 let rows = 4;
 let cols = 4;
-let grid = [];
+let board = [];
 let h;
 let w;
-const CELL_SIZE = 105;
+// const CELL_SIZE = 105;
 
 function preload(){
   source = loadImage("cheetah.png");
@@ -32,18 +32,55 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   w = width/ cols;
   h = height/rows;
-  for(let i = 0; i < rows ; i++){
-    for (let j = 0; j< cols; j++){
+
+  for(let i = 0; i < cols ; i++){
+    board[i]=[];
+    for (let j = 0; j< rows; j++){
+      
       let x = i*w;
       let y = j*h;
-      let img = createImg(w,h);
+      let img = createImage(floor(w), floor(h));
       img.copy(source,x,y,w,h,0,0,w,h);
       let index = i+j*cols;
-      grid.push(index)
+      board[i][j] = index;
       let tile = new Tile(index, img);
       tiles.push(tile);
     }
   }
+
+  tiles.pop();
+  board[cols-1].pop();
+  board[cols-1].push(-1);
+
+  
+    // function swap(i,j,array){
+    // let temp = array[i];
+    // array[i] = array[j];
+    // array[j]= temp;
+
+  
+  function shuffling(){
+    let tempBoard = [];
+    for(let i = 0; i < cols; i++){
+      // let r1 = floor(random(0, array.length));
+      // let r2 = floor(random(0, array.length));
+      // swap(r1,r2,array);
+      for(let j = 0; j < rows; j++){
+        tempBoard.push(board[i][j]);
+    }
+
+
+  }
+  tempBoard = shuffle(tempBoard);
+  let counter = 0;
+  for (let i = 0; i < cols; i++) {
+      for (let j = 0; j < rows; j++) {
+        board[i][j] = tempBoard[counter];
+        counter++;
+      }
+    }
+  }
+  shuffling();
 
   
   button = createButton('Puzzle');
@@ -59,7 +96,6 @@ function setup() {
 }
 
 function draw() {
-  // background(220);
   if (screen === 0){
     drawMenu();
   }
@@ -98,27 +134,74 @@ function drawGame() {
   }
   
 function displayGrid(){
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < cols; j++) {
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
       let index = i + j* cols;
       let x = i*w;
       let y = j*h;
-      let tileIndex = grid[index]
-      let img = tiles[tileIndex];
-      image(img,x,y);
-      if (grid[y][x] === 0) {
-        fill("white");
+      let tileIndex = board[i][j];
+      if(tileIndex > -1){
+        let img = tiles[tileIndex].img;
+      image(img,x,y,w,h);
       }
-      else if (grid[y][x] === 1) {
-        fill("black");
+
+      else{
+        fill(255);
+        rect(x,y,w,h);
       }
-      square(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
+
+      
+      // for (let i = 0; i < cols; i++) {
+      // for (let j = 0; j < rows; j++) {
+      //   let x = i*w;
+      //   let y = j*h;
+        strokeWeight(2);
+        noFill();
+        rect(x,y,w,h);
+
+      // if (grid[y][x] === 0) {
+      //   fill("white");
+      // }
+      // else if (grid[y][x] === 1) {
+      //   fill("black");
+      // }
+
+      // square(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
     }
   }
 }
+
+function mousePressed(){
+  if (screen === 1){
+    let i = Math.floor(mouseX/w);
+    let j = Math.floor(mouseY/h);
+
+    if (i > 0 && board[i - 1][j] === -1 ){
+      swapPieces(i,j,i - 1, j);    
+    }
+    else if (i < cols -1 && board[i + 1][j] === -1){
+      swapPieces(i,j,i+1,j);
+
+    }
+    else if(j > 0 && board[i][j-1] === -1){
+      swapPieces(i,j,i,j-1);
+    }
+    else if(j < rows -1 && board[i][j+1] === -1){
+      swapPieces(i,j,i,j+1);
+  }
+}
+}
+function swapPieces(i1, j1, i2, j2) {
+  let temp = board[i1][j1];
+  board[i1][j1] = board[i2][j2];
+  board[i2][j2] = temp;
+}
+
+
 function startPuzzle() {
   screen = 1;
 }
 function startTicTacToe(){
   screen = 2;
 }
+
