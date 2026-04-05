@@ -5,31 +5,54 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
+class Tile {
+  constructor(index, img) {
+    this.index = index;
+    this.img = img;
+  }
+}
 
 let screen = 0;
 let button;
 let button2;
-let rows = 10;
-let cols = 10;
+let tiles = [];    // The pieces
+let rows = 4;
+let cols = 4;
 let grid = [];
-const CELL_SIZE = 40;
+let h;
+let w;
+const CELL_SIZE = 105;
+
+function preload(){
+  source = loadImage("cheetah.png");
+
+}
 
 function setup() {
-  for(let y = 0; y < rows ; y++){
-    grid[y] = [];
-    for (let x = 0; x< cols; x++){
-      grid[y][x]=0;
+  createCanvas(windowWidth, windowHeight);
+  w = width/ cols;
+  h = height/rows;
+  for(let i = 0; i < rows ; i++){
+    for (let j = 0; j< cols; j++){
+      let x = i*w;
+      let y = j*h;
+      let img = createImg(w,h);
+      img.copy(source,x,y,w,h,0,0,w,h);
+      let index = i+j*cols;
+      grid.push(index)
+      let tile = new Tile(index, img);
+      tiles.push(tile);
     }
   }
 
-  createCanvas(windowWidth, windowHeight);
+  
   button = createButton('Puzzle');
   button.position(width/2 - 50, height/2);
-  button.mousePressed(startGame);
+  button.mousePressed(startPuzzle);
 
   button2 = createButton('Tic tac Toe');
   button2.position(width/2 + 10, height/2);
-  button2.mousePressed(startGame);
+  button2.mousePressed(startTicTacToe);
 
 
 
@@ -42,6 +65,9 @@ function draw() {
   }
   else if (screen ===1 ){
     drawGame();
+  }
+  else if (screen === 2){
+    drawTicTacToe();
   }
 
 }
@@ -59,12 +85,27 @@ function drawGame() {
   background(100);
   button.hide();
   button2.hide();
-
   displayGrid();
-}
+
+  }
+
+  function drawTicTacToe(){
+    background(50);
+    button.hide();
+    button2.hide();
+    fill(255);
+    // TicTaeToe logic
+  }
+  
 function displayGrid(){
-  for (let y = 0; y < rows; y++) {
-    for (let x = 0; x < cols; x++) {
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      let index = i + j* cols;
+      let x = i*w;
+      let y = j*h;
+      let tileIndex = grid[index]
+      let img = tiles[tileIndex];
+      image(img,x,y);
       if (grid[y][x] === 0) {
         fill("white");
       }
@@ -75,7 +116,9 @@ function displayGrid(){
     }
   }
 }
-function startGame() {
+function startPuzzle() {
   screen = 1;
 }
-
+function startTicTacToe(){
+  screen = 2;
+}
