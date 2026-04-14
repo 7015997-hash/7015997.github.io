@@ -3,7 +3,7 @@
 // Date
 //
 // Extra for Experts:
-// Used "class" to break the pieces from the main image
+// Used "class" to break the pieces from the main image before doing it in the class
 
 
 class Tile {
@@ -47,7 +47,7 @@ function setup() {
       tiles.push(tile);
     }
   }
-
+  //  remove the last tile
   tiles.pop();
   board[cols-1].pop();
   board[cols-1].push(-1);
@@ -174,5 +174,4 @@ function swapPieces(i1, j1, i2, j2) {
 function startPuzzle() {
   screen = 1;
 }
-
 
