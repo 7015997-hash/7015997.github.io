@@ -5,7 +5,7 @@
 // Extra for Experts:
 // Used "class" to break the pieces from the main image before doing it in the class
 
-
+// Class 
 class Tile {
   constructor(index, img) {
     this.index = index;
@@ -21,6 +21,7 @@ let cols = 4;
 let board = [];
 let h;
 let w;
+let img;
 
 
 function preload(){
@@ -81,8 +82,9 @@ function setup() {
   button.position(width/2 , height/2);
   button.mousePressed(startPuzzle);
 
+  
 }
-
+// chaging screen
 function draw() {
   if (screen === 0){
     drawMenu();
@@ -112,7 +114,7 @@ function drawGame() {
 }
 
 
-  
+// grid
 function displayGrid(){
   for (let i = 0; i < cols; i++) {
     for (let j = 0; j < rows; j++) {
