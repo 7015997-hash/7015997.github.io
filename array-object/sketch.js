@@ -25,10 +25,9 @@ function setup() {
   // Button 1
   let button1 = createButton('Chladni Kafiyeh');
   button1.position(100, 450);
-  button1.mousePressed(() => 
-    {first = 2;
-      loop();
-    })
+  button1.mousePressed(() =>{first = 2;
+    loop();
+  })
   
 
   // Button 2 
