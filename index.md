@@ -10,6 +10,7 @@
 [Game of life](9-life)
 -[Character in grid](10-characterS)
 -[Walker OOP demo](12-walker)
+-[Fire Works OOP demo](13-fireworks)
 
 
 ## Assignmet
