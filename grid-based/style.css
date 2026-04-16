@@ -1,5 +1,5 @@
 html {
-  margin: 10;
+  margin: 0;
   padding: 0;
 }
 
@@ -7,21 +7,12 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -60%);
+  transform: translate(-50%, -50%);
   background-color: brown;
 
   }
 
 
-
 canvas {
   display: block;
-  /* Optional: adds a slight shadow to make the canvas pop against the brown */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* If you add HTML images using createImg(), they will also be affected by the body centering */
-img {
-  max-width: 100%;
-  height: auto;
 }

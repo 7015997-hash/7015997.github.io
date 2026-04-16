@@ -22,6 +22,7 @@ let board = [];
 let h;
 let w;
 let img;
+let refImg;
 
 
 function preload(){
@@ -82,7 +83,8 @@ function setup() {
   button.position(width/2 , height/2);
   button.mousePressed(startPuzzle);
 
-  
+
+
 }
 // chaging screen
 function draw() {
@@ -100,7 +102,8 @@ function drawMenu(){
   textAlign(CENTER);
   textSize(30);
   fill(255);
-  text('Main', width/2+30, height/2-50);
+  text('Main  ( Match the picture )', width/2+30, height/2-50);
+  image(source, width/2-150, height/2-380,400,300);
   
   button.show();
 
