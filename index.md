@@ -13,6 +13,7 @@
 -[Fire Works OOP demo](13-fireworks)
 -[Ball collision](14-ball)
 -[Connected nodes](15-nodes)
+-[Inheritance OOP](16-inheritance)
 
 
 ## Assignmet
