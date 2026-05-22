@@ -16,6 +16,7 @@
 -[Inheritance OOP](16-inheritance)
 -[Collide 2d](17-collide)
 -[Recursive circels](18-recursive)
+-[Recursive triangle](19- triangle)
 
 
 ## Assignmet
